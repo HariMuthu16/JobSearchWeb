@@ -13,6 +13,10 @@ namespace JobSearchWeb.Controllers
         {
             return View();
         }
+        public ActionResult Index1()
+        {
+            return View();
+        }
 
         // GET: Home/Details/5
         public ActionResult Details(int id)

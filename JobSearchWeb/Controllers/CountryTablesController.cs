@@ -21,7 +21,11 @@ namespace JobSearchWeb.Controllers
           // GET: CountryTables
             return View(db.CountryTables.ToList());
         }
-
+        public ActionResult Index1()
+        { // GET: CountryTables
+        
+            return View(db.CountryTables.ToList());
+        }
         // GET: CountryTables/Details/5
         public ActionResult Details(int? id)
         {
