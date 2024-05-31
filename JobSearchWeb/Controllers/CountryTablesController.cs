@@ -16,9 +16,7 @@ namespace JobSearchWeb.Controllers
 
         // GET: CountryTables
         public ActionResult Index()
-        { // GET: CountryTables
-          // GET: CountryTables
-          // GET: CountryTables
+        {
             return View(db.CountryTables.ToList());
         }
         public ActionResult Index1()
