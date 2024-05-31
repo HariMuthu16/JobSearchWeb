@@ -1,0 +1,107 @@
+﻿@model IEnumerable<JobSearchWeb.Models.UserTable>
+
+@{
+    ViewBag.Title = "AllUsers";
+}
+
+<h2>AllUsers</h2>
+<div class="container">
+    <div class="section-top-border">
+        <h3 class="mb-30  text-center">Categories</h3>
+
+        <p>
+            @Html.ActionLink("Add User", "Create", null, new { @class = "genric-btn primary circle" })
+        </p>
+
+        <div class="progress-table-wrap">
+            <div class="progress-table">
+
+                <div class="table-head">
+                    @* <div class="serial">Sr.No</div>*@
+                    <div class="country">User Name</div>
+                    <div class="country">PassWord</div>
+                    <div class="country"> User Email</div>
+                    <div class="country">User ContactNo</div>
+                    <div class="country">User Type</div>
+                    <div class="visit">Action</div>
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="table-row">
+
+                        @*<div class="serial">01</div>*@
+                        <div class="country">@Html.DisplayFor(modelItem => item.UserName)</div>
+                      
+                        <div class="country">@Html.DisplayFor(modelItem => item.Password) </div>
+                        <div class="country">@Html.DisplayFor(modelItem => item.EmailAddress) </div>
+                        <div class="country">@Html.DisplayFor(modelItem => item.ContactNo) </div>
+                        <div class="country">@Html.DisplayFor(modelItem => item.UserTypeTable.UserType) </div>
+
+                        <div class="visit">
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "genric-btn warning circle mr-4" })
+
+                            @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "genric-btn info circle mr-4" })*@
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "genric-btn danger circle" })
+                        </div>
+                    </div>
+
+                }
+                </div></div></div></div>
+
+                <!--<p>
+        @Html.ActionLink("Create New", "Create" , null, new { @class = "genric-btn primary circle mr-4" })
+    </p>
+    <table class="table table-responsive table-hover">
+        <tr>
+            <th>
+               User Name-->
+                @*@Html.DisplayNameFor(model => model.UserName)*@
+                <!--</th>
+    <th>
+       PassWord-->
+                @* @Html.DisplayNameFor(model => model.Password)*@
+                <!--</th>
+    <th>
+       User Email-->
+                @* @Html.DisplayNameFor(model => model.EmailAddress)*@
+                <!--</th>
+    <th>
+       User ContactNo-->
+                @*@Html.DisplayNameFor(model => model.ContactNo)*@
+                <!--</th>
+    <th>
+       User Type-->
+                @* @Html.DisplayNameFor(model => model.UserTypeTable.UserType)*@
+                <!--</th>
+            <th>
+                Action
+            </th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserTypeTable.UserType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.UserID }, new { @class = "genric-btn warning circle mr-2" })
+                @Html.ActionLink("Details", "Details", new { id=item.UserID }, new { @class = "genric-btn info circle mr-2" })
+                @Html.ActionLink("Delete", "Delete", new { id=item.UserID }, new { @class = "genric-btn danger circle " })
+            </td>
+        </tr>
+    }
+
+    </table>-->

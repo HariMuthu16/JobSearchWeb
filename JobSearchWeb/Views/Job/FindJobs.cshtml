@@ -1,0 +1,88 @@
+﻿@model IEnumerable<JobSearchWeb.Models.PostJobTable>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<!-- Hero Area Start-->
+<div class="slider-area ">
+    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="@Url.Content("~/Content/assets/img/hero/about.jpg")">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Get your job</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Area End -->
+
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="count-job mb-25 text-center font-weight-bold" style="color:peru;">
+            Total   <span style="color:darkblue;" class="font-weight-bold"> @Model.Count()  </span>  Jobs   found!...
+            <!-- Select job items start -->
+            <!--  Select job items End-->
+        </div>
+    </div>
+</div>
+
+
+<div class="job-listing-area pb-20">
+    <div class="container">
+        <div class="row">
+            <a href="@Url.Action("FilterJobs","Job")"> <input type="submit" value="Click to Add Filter" class="genric-btn danger circle" /> </a>
+
+
+
+            <div class="col-xl-9 col-lg-9 col-md-8">
+                <!-- Featured_job_start -->
+                <section class="featured-job-area">
+                    <div class="container">
+
+                        @foreach (var item in Model)
+                        {
+                            @*@Html.DisplayFor(modelItem => item.JobTitle)
+                                @Html.DisplayFor(modelItem => item.MinSalary)
+                                @Html.DisplayFor(modelItem => item.MaxSalary)
+                                @Html.DisplayFor(modelItem => item.Location)
+                                @Html.DisplayFor(modelItem => item.CompanyTable.CompanyName)
+                                @Html.DisplayFor(modelItem => item.JobCategoryTable.JobCategory)
+                                @Html.DisplayFor(modelItem => item.JobNatureTable.JobNature)*@
+
+                            <!-- single-job-content -->
+                            <div class="single-job-items mb-30">
+                                <div class="job-items">
+                                    <div class="company-img">
+                                        <a href="#"><img src="~/Content/assets/img/icon/job-list1.png" alt=""></a>
+                                    </div>
+                                    <div class="job-tittle job-tittle2">
+                                        <a href="@Url.Content("~/Job/JobDetails/"+item.PostJobID+"")">
+                                            <h4>@item.JobTitle</h4>
+                                        </a>
+                                        <ul>
+                                            <li>@item.CompanyTable.CompanyName</li>
+                                            <li><i class="fas fa-map-marker-alt"></i>@item.Location</li>
+                                            <li>₹@item.MinSalary - ₹@item.MaxSalary</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="items-link items-link2 f-right">
+                                    <a href="job_details.html">@item.JobNatureTable.JobNature</a>
+                                    <span>7 hours ago</span>
+                                </div>
+                            </div>
+                            <!-- single-job-content -->
+
+                        }
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+﻿@model JobSearchWeb.Models.JobNatureTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobNatureTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobNature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobNature)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JobNatureID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<JobSearchWeb.Models.PostJobTable>
+
+<p style="margin-top:70px;">
+    @Html.ActionLink("Add job", "PostJob","Job",null, new { @class = "genric-btn primary circle" })
+</p>
+<table class="table mt-3" >
+    <tr>
+        <th>
+            Job Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Min-Max Salary
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Vacancy
+        </th>
+        <th>
+            PostDate
+        </th>
+        <th>
+            LastDate
+        </th>
+        @*<th>
+            Website Url
+        </th>*@
+        <th>
+            Category
+        </th>
+        <th>
+            Nature
+        </th>
+        <th>
+            Status
+        </th>
+      
+       
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        <td>@item.MinSalary - @item.MaxSalary</td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.MinSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxSalary)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vacancy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationLastDate)
+        </td>
+        
+        @*<td>
+            @Html.DisplayFor(modelItem => item.WebSiteUrl)
+        </td>*@
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.JobCategoryTable.JobCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobNatureTable.JobNature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobStatusTable.JobStatus)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UserTable.UserName)
+        </td>*@
+        <td>
+            @Html.ActionLink("View", "JobDetails", new { id=item.PostJobID }, new { @class = "genric-btn primary circle" })
+            @Html.ActionLink("Add +", "AddRequirements", new { id=item.PostJobID }, new { @class = "genric-btn info circle" }) 
+            @Html.ActionLink("Delete", "DeleteJobPost", new { id=item.PostJobID }, new { @class = "genric-btn danger circle" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,84 @@
+﻿@model JobSearchWeb.Models.JobRequirementsMV
+
+@*<p>
+        @Html.ActionLink("Add", "Create")
+    </p>*@
+
+<h2 style="margin-left:400px" class="mb-5"> New Job Requirements</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+   
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="col-md-6 mb-4">
+        Select Job Category
+        <div class="form-group">
+            @Html.DropDownList("JobRequirementID", null, "Select Job Requirement",
+            htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.JobRequirementID, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.PostJobID)
+        </div>
+    </div>
+        <div class="form-group" style="margin-left:310px">
+            @Html.LabelFor(model => model.JobRequirementDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.JobRequirementDetails, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JobRequirementDetails, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mb-5" style="margin-left:310px">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="genric-btn primary radius mr-4" />
+
+                @Html.ActionLink("Back to List", "CompanyJobsList", null, new { @class = "genric-btn info radius" })
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+    <h2>Job Requirements</h2>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Job Title
+            </th>
+            <th>
+                Requirement Title
+            </th>
+            <th>
+                Details
+            </th>
+
+            <th>Action</th>
+        </tr>
+
+       @foreach (var item in Model.Details)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostJobTable.JobTitle)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobRequirementTable.JobRequirementTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobRequirementDetails)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.JobRequirementDetailsID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.JobRequirementDetailsID }) |*@
+                   @Html.ActionLink("Delete", "DeleteRequirements", new { id = item.JobRequirementDetailsID }, new { @class = "genric-btn danger radius " })
+                </td>
+            </tr>
+        }
+
+    </table>

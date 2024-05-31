@@ -1,0 +1,237 @@
+﻿@model JobSearchWeb.Models.UserMV
+@{
+    ViewBag.Title = "Registration";
+}
+
+<div class="mt-3">
+    @*<section class="contact-section">*@
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 mb-3">
+                <h2 class="contact-title text-center ">User Registration</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-lg-8 mx-auto">
+                @using (Html.BeginForm("NewUser", "User", FormMethod.Post, new { @class = "form-contact", @novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @*<form class="form-contact contact_form" id="contactForm" novalidate="novalidate">*@
+                <div class="row ">
+
+                    <div class="col-6">
+                        <div class="form-group">
+
+                            @Html.EditorFor(model => model.UserName, new
+                       {
+                           htmlAttributes = new
+                                {
+                                    @class = "form-control valid",
+                           @type = "text",
+                          @id = "name",
+                          @name = "name",
+                          @PlaceHolder = "Enter UserName",
+                          @onfocus = "this.placeholder = ''",
+                          @onblur = "this.placeholder = 'Enter UserName'"
+                           }
+
+                       })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+                         </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Password, new
+                                {
+                                htmlAttributes = new
+                                    {
+                                @class = "form-control valid",
+                                @type = "password",
+                                @id = "password",
+                                @name = "Password",
+                                @PlaceHolder = "Enter your Password",
+                                @onfocus = "this.placeholder = ''",
+                                @onblur = "this.placeholder = 'Enter your Password'"
+                                }
+
+                                })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+
+                            @Html.EditorFor(model => model.EmailAddress, new
+                       {
+                           htmlAttributes = new
+                                {
+                                    @class = "form-control valid",
+                           @type = "email",
+                          @id = "email",
+                          @name = "email",
+                          @PlaceHolder = "Enter your Email ID",
+                          @onfocus = "this.placeholder = ''",
+                          @onblur = "this.placeholder = 'Enter your Email ID'"
+                           }
+
+                       })
+                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.ContactNo, new
+                            {
+                            htmlAttributes = new
+                                {
+                                    @class = "form-control valid",
+                            @type = "tel",
+                            @id = "contactno",
+                            @name = "contactno",
+                            @PlaceHolder = "Enter your Contact No",
+                            @onfocus = "this.placeholder = ''",
+                            @onblur = "this.placeholder = 'Enter your Contact No'"
+                            }
+
+                            })
+                            @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                            @*<input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">*@
+                        </div>
+                    </div>
+                    <div class="col-sm-6" style="color:blue;">
+                        <div>
+                            <p>
+                                Are You Job Provider?
+                                @Html.EditorFor(model => model.AreYouJobProvider)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12" id="divcompanyname">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Company.CompanyName, new
+                            {
+                            htmlAttributes = new
+                                {
+                                    @class = "form-control valid",
+                            @type = "text",
+                            @id = "companyname",
+                            @name = "companyname",
+                            @PlaceHolder = "Enter your Company Name",
+                            @onfocus = "this.placeholder = ''",
+                            @onblur = "this.placeholder = 'Enter your Company Name'"
+                            }
+
+                            })
+                            @Html.ValidationMessageFor(model => model.Company.CompanyName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-12" id="divcompanyphoneno">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Company.PhoneNo, new
+                            {
+                            htmlAttributes = new
+                                {
+                                    @class = "form-control valid",
+                            @type = "tel",
+                            @id = "companyphoneno",
+                            @name = "companyphoneno",
+                            @PlaceHolder = "Enter your Company Phone No",
+                            @onfocus = "this.placeholder = ''",
+                            @onblur = "this.placeholder = 'Enter your Company Phone No'"
+                            }
+
+                            })
+                            @Html.ValidationMessageFor(model => model.Company.PhoneNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-12" id="divcompanyemail">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Company.EmailAddress, new
+                            {
+                            htmlAttributes = new
+                                {
+                                    @class = "form-control valid",
+                            @type = "email",
+                            @id = "companyemail",
+                            @name = "companyemail",
+                            @PlaceHolder = "Enter your Company Email",
+                            @onfocus = "this.placeholder = ''",
+                            @onblur = "this.placeholder = 'Enter your Company Email'"
+                            }
+
+                            })
+                            @Html.ValidationMessageFor(model => model.Company.EmailAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-12" id="divcompanydescription">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Company.Description, new
+                            {
+                            htmlAttributes = new
+                                {
+                                    @class = "form-control valid",
+                            @type = "description",
+                            @id = "companydescription",
+                            @name = "companydescription",
+                            @PlaceHolder = "Enter Company Description",
+                            @onfocus = "this.placeholder = ''",
+                            @onblur = "this.placeholder = 'Enter  Company Description'"
+                            }
+
+                            })
+                            @Html.ValidationMessageFor(model => model.Company.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                    <div class="form-group mt-3">
+                        @*<button type="submit" class="button button-contactForm boxed-btn">Register</button>*@
+                        <input   type="submit" value="Sign Up" class="button  boxed-btn"/>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+    </div>
+    @*</section>*@
+</div>
+
+<script src="~/Content/assets/js/jquery-3.3.1.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divcompanyname").hide();
+        $("#divcompanyemail").hide();
+        $("#divcompanycontactno").hide();
+        $("#divcompanydescription").hide();
+        $("#divcompanyphoneno").hide();
+        $("#AreYouJobProvider").change(function () {
+            if (this.checked) {
+                $("#divcompanyname").show();
+                $("#divcompanyemail").show();
+                $("#divcompanycontactno").show();
+                $("#divcompanydescription").show();
+                $("#divcompanyphoneno").show();
+            } else {
+                $("#divcompanyname").hide();
+                $("#divcompanyemail").hide();
+                $("#divcompanycontactno").hide();
+                $("#divcompanydescription").hide();
+                $("#divcompanyphoneno").hide();
+            }
+        });
+    });
+
+</script>
